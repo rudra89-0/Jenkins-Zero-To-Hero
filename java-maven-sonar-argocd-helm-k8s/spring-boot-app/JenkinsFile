@@ -1,10 +1,10 @@
 pipeline {
-  agent {
-    docker {
-      image 'abhishekf5/maven-abhishek-docker-agent:v1'
-      args '--user root -v /var/run/docker.sock:/var/run/docker.sock'
-    }
+  agent any
+  
+  tools {
+    maven 'Maven'
   }
+  
   stages {
     stage('Checkout') {
       steps {
@@ -12,15 +12,17 @@ pipeline {
         git branch: 'main', url: 'https://github.com/rudra89-0/Jenkins-Zero-To-Hero.git'
       }
     }
+    
     stage('Build and Test') {
       steps {
         sh 'ls -ltr'
         sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && mvn clean package'
       }
     }
+    
     stage('Static Code Analysis') {
       environment {
-        SONAR_URL = "http://13.61.4.119:9000"
+        SONAR_URL = "http://13.61.4.119/:9000"
       }
       steps {
         withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
@@ -28,21 +30,21 @@ pipeline {
         }
       }
     }
+    
     stage('Build and Push Docker Image') {
       environment {
         DOCKER_IMAGE = "blackthunder101/ultimate-cicd:${BUILD_NUMBER}"
-        REGISTRY_CREDENTIALS = credentials('docker-cred')
       }
       steps {
         script {
             sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && docker build -t ${DOCKER_IMAGE} .'
-            def dockerImage = docker.image("${DOCKER_IMAGE}")
             docker.withRegistry('https://index.docker.io/v1/', "docker-cred") {
-                dockerImage.push()
+                sh "docker push ${DOCKER_IMAGE}"
             }
         }
       }
     }
+    
     stage('Update Deployment File') {
         environment {
             GIT_REPO_NAME = "Jenkins-Zero-To-Hero"
