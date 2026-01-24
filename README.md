@@ -255,7 +255,6 @@ Warning: v1 Endpoints is deprecated in v1.33+; use discovery.k8s.io/v1 EndpointS
 NAME                      ENDPOINTS                                                        AGE
 spring-boot-app-service   10.244.0.41:8080,10.244.0.42:8080,10.244.0.43:8080 + 6 more...   44m
 
-/screenshots/kubernetes-pods-services.png
 
 🌐 Application Access
 
