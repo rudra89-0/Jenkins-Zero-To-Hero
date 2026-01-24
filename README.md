@@ -131,6 +131,170 @@ http://<ec2-instance-public-ip>:8080/restart
 
 The docker agent configuration is now successful.
 
+🚀 My End-to-End CI/CD Pipeline Project (Jenkins · Argo CD · Kubernetes)
+
+Resume-ready DevOps project demonstrating CI/CD automation, GitOps deployment, and Kubernetes orchestration on AWS EC2.
+
+📌 Project Summary
+
+This project demonstrates a complete end-to-end CI/CD pipeline built using Jenkins for Continuous Integration and Argo CD for GitOps-based Continuous Delivery.
+
+A Spring Boot application is built, containerized, and deployed automatically to Kubernetes (Minikube) running on an AWS EC2 instance.
+
+🧱 Tech Stack
+
+CI/CD: Jenkins
+
+Build Tool: Maven
+
+Containerization: Docker
+
+Container Registry: Docker Hub
+
+CD / GitOps: Argo CD
+
+Orchestration: Kubernetes (Minikube)
+
+Cloud: AWS EC2 (Ubuntu)
+
+Application: Spring Boot (Java)
+
+🏗 Architecture
+Developer Push
+      ↓
+GitHub Repository
+      ↓
+Jenkins (CI)
+  - Build & Test
+  - Docker Image Build
+  - Push to Docker Hub
+  - Update K8s Manifest
+      ↓
+Argo CD (GitOps CD)
+      ↓
+Kubernetes (Minikube on EC2)
+      ↓
+Spring Boot Application
+
+⚙️ Continuous Integration (Jenkins)
+
+The Jenkins pipeline automates the following steps:
+
+Pulls source code from GitHub
+
+Builds the Spring Boot application using Maven
+
+Creates a Docker image
+
+Tags the image using the Jenkins build number
+
+Pushes the image to Docker Hub
+
+Updates Kubernetes deployment manifests in GitHub
+
+📸 Jenkins Pipeline Screenshot
+
+<img width="1920" height="1025" alt="Screenshot 2026-01-24 172955" src="https://github.com/user-attachments/assets/cddb35c2-3b3c-4502-85cc-3e8fcd89c490" />
+
+/screenshots/jenkins-pipeline-success.png
+
+🔄 Continuous Delivery (Argo CD – GitOps)
+
+Argo CD is configured to:
+
+Continuously monitor the Git repository
+
+Detect changes to Kubernetes manifests
+
+Automatically sync and deploy changes
+
+Maintain desired application state
+
+Self-heal if configuration drift occurs
+
+📸 Argo CD Application View
+
+<img width="1909" height="1026" alt="Screenshot 2026-01-24 173027" src="https://github.com/user-attachments/assets/927ee318-a415-4725-b4ce-60910a37a519" />
+
+
+/screenshots/argocd-application-synced.png
+
+☸️ Kubernetes Deployment
+
+Application deployed as a Deployment with multiple replicas
+
+Exposed using a NodePort Service
+
+Namespace-based isolation implemented
+
+Service-to-pod routing verified via endpoints
+
+🔍 Kubernetes Verification
+kubectl get pods -n apps
+kubectl get svc -n apps
+kubectl get endpoints -n apps spring-boot-app-service
+
+📸 Kubernetes Pods & Services
+
+ubuntu@ip-172-31-44-117:~$ kubectl get pods -n apps
+NAME                               READY   STATUS    RESTARTS   AGE
+spring-boot-app-6f94ccb4fd-4ljms   1/1     Running   0          44m
+spring-boot-app-6f94ccb4fd-9hsvt   1/1     Running   0          44m
+spring-boot-app-6f94ccb4fd-dvl5f   1/1     Running   0          44m
+spring-boot-app-6f94ccb4fd-kc87z   1/1     Running   0          44m
+spring-boot-app-6f94ccb4fd-kfj94   1/1     Running   0          44m
+spring-boot-app-6f94ccb4fd-lk4z8   1/1     Running   0          44m
+spring-boot-app-6f94ccb4fd-ltfsc   1/1     Running   0          44m
+spring-boot-app-6f94ccb4fd-tp4lg   1/1     Running   0          44m
+spring-boot-app-6f94ccb4fd-vs8qk   1/1     Running   0          44m
+ubuntu@ip-172-31-44-117:~$ kubectl get svc -n apps
+NAME                      TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+spring-boot-app-service   NodePort   10.107.125.244   <none>        80:30080/TCP   44m
+ubuntu@ip-172-31-44-117:~$ kubectl get endpoints -n apps spring-boot-app-service
+Warning: v1 Endpoints is deprecated in v1.33+; use discovery.k8s.io/v1 EndpointSlice
+NAME                      ENDPOINTS                                                        AGE
+spring-boot-app-service   10.244.0.41:8080,10.244.0.42:8080,10.244.0.43:8080 + 6 more...   44m
+
+/screenshots/kubernetes-pods-services.png
+
+🌐 Application Access
+
+The application was successfully accessed via Kubernetes networking:
+
+minikube ip
+curl http://<MINIKUBE-IP>:30080
+
+📸 Application Running in Browser
+
+<img width="1914" height="1038" alt="Screenshot 2026-01-24 173057" src="https://github.com/user-attachments/assets/fd4e7286-b0bf-4b0c-b32a-fcfbdce76076" />
+
+
+/screenshots/application-running.png
+
+🧠 Key Learnings
+
+Built a production-style CI/CD pipeline from scratch
+
+Implemented GitOps-based continuous delivery using Argo CD
+
+Gained hands-on experience with Kubernetes networking
+
+Debugged real-world Argo CD namespace and sync issues
+
+Deployed containerized applications on AWS EC2
+
+📄 Resume Highlights
+
+Designed and implemented an end-to-end CI/CD pipeline using Jenkins, Docker, and Argo CD
+
+Automated Docker image builds and GitOps-based Kubernetes deployments
+
+Deployed and managed Kubernetes workloads on AWS EC2 using Minikube
+
+Implemented multi-replica deployments with Kubernetes Services
+
+
+
 
 
 
