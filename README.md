@@ -270,27 +270,7 @@ curl http://<MINIKUBE-IP>:30080
 
 /screenshots/application-running.png
 
-🧠 Key Learnings
 
-Built a production-style CI/CD pipeline from scratch
-
-Implemented GitOps-based continuous delivery using Argo CD
-
-Gained hands-on experience with Kubernetes networking
-
-Debugged real-world Argo CD namespace and sync issues
-
-Deployed containerized applications on AWS EC2
-
-📄 Resume Highlights
-
-Designed and implemented an end-to-end CI/CD pipeline using Jenkins, Docker, and Argo CD
-
-Automated Docker image builds and GitOps-based Kubernetes deployments
-
-Deployed and managed Kubernetes workloads on AWS EC2 using Minikube
-
-Implemented multi-replica deployments with Kubernetes Services
 
 
 
