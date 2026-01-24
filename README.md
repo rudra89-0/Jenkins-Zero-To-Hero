@@ -194,7 +194,9 @@ Updates Kubernetes deployment manifests in GitHub
 
 📸 Jenkins Pipeline Screenshot
 
-<img width="1920" height="1025" alt="Screenshot 2026-01-24 172955" src="https://github.com/user-attachments/assets/cddb35c2-3b3c-4502-85cc-3e8fcd89c490" />
+
+<img width="1900" height="924" alt="Screenshot 2026-01-24 172955" src="https://github.com/user-attachments/assets/f605d8a9-c0a5-4730-8eab-48c8b7db39f7" />
+
 
 /screenshots/jenkins-pipeline-success.png
 
@@ -214,7 +216,8 @@ Self-heal if configuration drift occurs
 
 📸 Argo CD Application View
 
-<img width="1909" height="1026" alt="Screenshot 2026-01-24 173027" src="https://github.com/user-attachments/assets/927ee318-a415-4725-b4ce-60910a37a519" />
+
+<img width="1920" height="940" alt="Screenshot 2026-01-24 180617" src="https://github.com/user-attachments/assets/87d2f9c5-d2a8-4964-9201-e493c5b7ec7d" />
 
 
 /screenshots/argocd-application-synced.png
@@ -265,7 +268,7 @@ curl http://<MINIKUBE-IP>:30080
 
 📸 Application Running in Browser
 
-<img width="1914" height="1038" alt="Screenshot 2026-01-24 173057" src="https://github.com/user-attachments/assets/fd4e7286-b0bf-4b0c-b32a-fcfbdce76076" />
+<img width="1905" height="927" alt="Screenshot 2026-01-24 173057" src="https://github.com/user-attachments/assets/384e3a10-ce70-424e-8de8-bf72cb57a54d" />
 
 
 /screenshots/application-running.png
